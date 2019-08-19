@@ -1,3 +1,4 @@
+set encoding=utf-8
 " make setting valid immediateliy
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
@@ -5,6 +6,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 :set shiftwidth=2
 :set expandtab
 syntax enable
+
+set backspace=2
 
 " define the shortcut prefix
 let mapleader=";"
@@ -25,9 +28,10 @@ set laststatus=2
 " Show current ruler
 set ruler
 " Set line number
-" set number
+set number
 " Set hight light search
 set hlsearch
+set cursorline
 
 " vundle setting
 filetype off
@@ -45,6 +49,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 
@@ -93,3 +99,12 @@ let g:tagbar_type_cpp = {
 \ }
 
 let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+let g:indexer_disableCtagsWarning=1
+" NodeTree : file list
+nmap <Leader>fl :NERDTreeToggle<CR>
+let NERDTreeWinSize=32
+let NERDTreeWinPos="left"
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer=1
+
