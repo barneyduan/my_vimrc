@@ -5,6 +5,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 :set tabstop=2
 :set shiftwidth=2
 :set expandtab
+:set colorcolumn=80
+highlight ColorColumn ctermbg=0
 syntax enable
 
 set backspace=2
@@ -51,6 +53,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 filetype plugin indent on
 
@@ -109,9 +113,11 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
 " YCM definition zone
+let g:ycm_server_python_interpreter='/usr/bin/python'
+"let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
 highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-let g:ycm_complete_in_comments=1
+"let g:ycm_complete_in_comments=1
 let g:ycm_confirm_extra_conf=0
 let g:ycm_collect_identifiers_from_tags_files=1
 let OmniCpp_DefaultNamespaces = ["_GLIBCXX_STD"]
@@ -123,3 +129,10 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
+" UltiSnips Zone
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+
+nnoremap <leader>dwp :StripWhitespace<CR>
