@@ -14,8 +14,6 @@ set backspace=2
 set colorcolumn=80 "enable a color column at 80
 " select the color
 highlight ColorColumn ctermbg=0
-syntax enable
-colorscheme monokai
 
 " define the shortcut prefix
 let mapleader=" "
@@ -42,6 +40,7 @@ set cursorline
 filetype off
 call plug#begin('~/.vim/plugged')
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'flrnd/candid.vim'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'vim-scripts/indexer.tar.gz'
 Plug 'vim-scripts/DfrankUtil'
@@ -132,3 +131,26 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+" Apply AutoFix to problem on the current line
+nmap <silent> <leader>ff <Plug>(coc-fix-current)
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Do default action for next item.
+nnoremap <silent> <space>nn  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>pp  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+
+autocmd BufNewFile leetcode_*.cpp 0r ~/.vim/template/template.cpp
+
+set termguicolors
+syntax enable
+colorscheme candid
